@@ -1,5 +1,5 @@
 angular.module('index').
-controller('IndexController', function ($scope, $rootScope, $location) {
+controller('IndexController', function ($scope, $rootScope, $location, localStorageService) {
     var user = $rootScope.user;
 
     $scope.user = user;
@@ -8,6 +8,7 @@ controller('IndexController', function ($scope, $rootScope, $location) {
         if (!user.name) {
             alert('Введите имя');
         } else {
+            localStorageService.set('user.name', user.name);
             $location.path('/test');
         }
     }

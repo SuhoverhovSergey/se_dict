@@ -1,5 +1,6 @@
 angular.module('dictApp', [
     'ngRoute',
     'index',
-    'test'
+    'test',
+    'LocalStorageModule'
 ]);

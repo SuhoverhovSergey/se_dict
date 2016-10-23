@@ -10,6 +10,7 @@
 
     <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/angular/angular.min.js"></script>
     <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 
     <title>Dict</title>
 </head>
@@ -30,8 +31,7 @@
     </div>
 </nav>
 
-<div class="container" ng-view>
-</div>
+<div class="container" ng-view></div>
 
 <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/jquery/dist/jquery.min.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
