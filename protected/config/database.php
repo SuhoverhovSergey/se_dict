@@ -1,14 +1,16 @@
 <?php
 
-// This is the database connection configuration.
-return array(
-	'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-	// uncomment the following lines to use a MySQL database
-	/*
-	'connectionString' => 'mysql:host=localhost;dbname=testdrive',
-	'emulatePrepare' => true,
-	'username' => 'root',
-	'password' => '',
-	'charset' => 'utf8',
-	*/
-);
+$dbConf = [
+    'connectionString' => 'mysql:host=localhost;dbname=sedict',
+    'emulatePrepare' => true,
+    'username' => '',
+    'password' => '',
+    'charset' => 'utf8',
+];
+
+$localFilePath = dirname(__FILE__) . '/db-local.php';
+if (file_exists($localFilePath)) {
+    return CMap::mergeArray($dbConf, require($localFilePath));
+}
+
+return $dbConf;
