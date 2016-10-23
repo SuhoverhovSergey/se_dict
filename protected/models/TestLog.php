@@ -38,6 +38,29 @@ class TestLog extends CActiveRecord
         );
     }
 
+    public function afterSave()
+    {
+        if ($this->is_correct) {
+            $user = $this->test->user;
+            $user->score += 1;
+            $user->save(false);
+        }
+
+        $count = static::model()->count("test_id = :test_id AND is_correct = 0", ['test_id' => $this->test_id]);
+        if ($count >= 3) {
+            $test = $this->test;
+            $test->is_finished = true;
+            $test->save(false);
+        } else {
+            $question = Dict::model()->getNextQuestion($this->test->id);
+            if (!$question) {
+                $test = $this->test;
+                $test->is_finished = true;
+                $test->save(false);
+            }
+        }
+    }
+
     /**
      * @return array relational rules.
      */
@@ -47,6 +70,7 @@ class TestLog extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'dict' => [static::BELONGS_TO, 'Dict', 'dict_id'],
+            'test' => [static::BELONGS_TO, 'Test', 'test_id'],
         );
     }
 

@@ -42,6 +42,7 @@ return array(
 			'urlFormat'=>'path',
 			'rules'=>array(
 				['api/<controller>/get', 'pattern' => 'api/<controller:\w+>', 'verb' => 'GET'],
+				['api/<controller>/create', 'pattern' => 'api/<controller:\w+>', 'verb' => 'POST'],
 
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',

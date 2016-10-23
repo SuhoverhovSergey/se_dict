@@ -44,6 +44,7 @@ class Test extends CActiveRecord
         // class name for the relations automatically generated below.
         return array(
             'log' => [static::HAS_MANY, 'TestLog', 'test_id'],
+            'user' => [static::BELONGS_TO, 'User', 'user_id'],
         );
     }
 
@@ -104,6 +105,11 @@ class Test extends CActiveRecord
             $test = new Test();
             $test->user_id = $userId;
             $test->save();
+
+            // сбрасываем оценку
+            $user = User::model()->findByPk($userId);
+            $user->score = 0;
+            $user->save();
         }
         return $test;
     }

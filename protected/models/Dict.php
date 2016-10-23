@@ -102,12 +102,10 @@ class Dict extends CActiveRecord
         $criteria->with = [
             'log' => [
                 'select' => false,
+                'on' => "log.test_id = {$testId}",
             ],
         ];
         $criteria->addCondition('log.id IS NULL');
-        $criteria->params = [
-            ':testId' => $testId,
-        ];
         $criteria->order = 'RAND() ASC';
         $criteria->limit = 1;
         $criteria->together = true;

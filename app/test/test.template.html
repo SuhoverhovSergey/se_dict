@@ -5,12 +5,12 @@
     <div class="col-md-12">
         <div class="radio" ng-repeat="variant in variants">
             <label>
-                <input type="radio" name="variant" id="variant{{$index}}" value="{{variant}}">
+                <input type="radio" ng-model="$parent.answer" ng-value="variant" name="answer">
                 {{variant}}
             </label>
         </div>
     </div>
     <div class="col-md-12">
-        <button type="button" class="btn btn-primary">Выбрать</button>
+        <button type="button" class="btn btn-primary" ng-click="selectVariant()">Выбрать</button>
     </div>
 </div>

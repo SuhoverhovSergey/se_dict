@@ -20,7 +20,7 @@ class m161023_115720_Dict__insert_data extends CDbMigration
             ['en' => 'melon', 'ru' => 'дыня'],
             ['en' => 'apricot', 'ru' => 'абрикос'],
             ['en' => 'mango', 'ru' => 'манго'],
-            ['en' => 'pear', 'ru' => 'слива'],
+            ['en' => 'plum', 'ru' => 'слива'],
             ['en' => 'pomegranate', 'ru' => 'гранат'],
             ['en' => 'cherry', 'ru' => 'вишня'],
         ]);
