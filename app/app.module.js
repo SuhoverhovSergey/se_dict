@@ -1,4 +1,5 @@
 angular.module('dictApp', [
     'ngRoute',
-    'index'
+    'index',
+    'test'
 ]);

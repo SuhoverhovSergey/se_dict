@@ -8,6 +8,10 @@ config(['$locationProvider', '$routeProvider',
                 templateUrl: '/app/index/index.template.html',
                 controller: 'IndexController'
             }).
+            when('/test', {
+                templateUrl: '/app/test/test.template.html',
+                controller: 'TestController'
+            }).
             otherwise('/');
     }
 ]);

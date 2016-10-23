@@ -43,5 +43,8 @@
 <script src="<?php echo Yii::app()->request->baseUrl ?>/app/index/index.module.js"></script>
 <script src="<?php echo Yii::app()->request->baseUrl ?>/app/index/index.controller.js"></script>
 
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/test/test.module.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/test/test.controller.js"></script>
+
 </body>
 </html>
