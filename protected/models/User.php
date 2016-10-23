@@ -94,4 +94,15 @@ class User extends CActiveRecord
     {
         return parent::model($className);
     }
+
+    public static function findOrCreate($username)
+    {
+        $user = static::model()->findByAttributes(['name' => $username]);
+        if (!$user) {
+            $user = new User();
+            $user->name = $username;
+            $user->save();
+        }
+        return $user;
+    }
 }

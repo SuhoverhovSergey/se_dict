@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>{{question.text}}</h3>
+    </div>
+    <div class="col-md-12">
+        <div class="radio" ng-repeat="variant in variants">
+            <label>
+                <input type="radio" name="variant" id="variant{{$index}}" value="{{variant}}">
+                {{variant}}
+            </label>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button type="button" class="btn btn-primary">Выбрать</button>
+    </div>
+</div>

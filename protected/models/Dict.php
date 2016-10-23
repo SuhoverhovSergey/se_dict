@@ -41,7 +41,9 @@ class Dict extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'log' => [static::HAS_MANY, 'TestLog', 'dict_id'],
+        );
     }
 
     /**
@@ -92,5 +94,33 @@ class Dict extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+
+    public function getNextQuestion($testId)
+    {
+        $criteria = new CDbCriteria();
+        $criteria->with = [
+            'log' => [
+                'select' => false,
+            ],
+        ];
+        $criteria->addCondition('log.id IS NULL');
+        $criteria->params = [
+            ':testId' => $testId,
+        ];
+        $criteria->order = 'RAND() ASC';
+        $criteria->limit = 1;
+        $criteria->together = true;
+        return static::find($criteria);
+    }
+
+    public function getVariants()
+    {
+        $criteria = new CDbCriteria();
+        $criteria->addCondition('t.id != :dict_id');
+        $criteria->params = [':dict_id' => $this->id];
+        $criteria->order = 'RAND() ASC';
+        $criteria->limit = 3;
+        return static::findAll($criteria);
     }
 }

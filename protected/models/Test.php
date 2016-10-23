@@ -42,7 +42,9 @@ class Test extends CActiveRecord
     {
         // NOTE: you may need to adjust the relation name and the related
         // class name for the relations automatically generated below.
-        return array();
+        return array(
+            'log' => [static::HAS_MANY, 'TestLog', 'test_id'],
+        );
     }
 
     /**
@@ -93,5 +95,16 @@ class Test extends CActiveRecord
     public static function model($className = __CLASS__)
     {
         return parent::model($className);
+    }
+    
+    public static function getTestByUserId($userId)
+    {
+        $test = static::model()->findByAttributes(['user_id' => $userId, 'is_finished' => false]);
+        if (!$test) {
+            $test = new Test();
+            $test->user_id = $userId;
+            $test->save();
+        }
+        return $test;
     }
 }
