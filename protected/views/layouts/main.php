@@ -1,59 +1,47 @@
 <?php /* @var $this Controller */ ?>
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="dictApp">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="language" content="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!-- blueprint CSS framework -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/screen.css" media="screen, projection">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/print.css" media="print">
-	<!--[if lt IE 8]>
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection">
-	<![endif]-->
+    <link href="<?php echo Yii::app()->request->baseUrl; ?>/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css">
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css">
+    <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/angular/angular.min.js"></script>
+    <script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/angular-route/angular-route.min.js"></script>
 
-	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+    <title>Dict</title>
 </head>
 
-<body>
+<body ng-controller="AppController">
 
-<div class="container" id="page">
+<nav class="navbar navbar-default">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Dict</a>
+        </div>
+    </div>
+</nav>
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+<div class="container" ng-view>
+</div>
 
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/site/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-	<?php echo $content; ?>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/app.module.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/app.config.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/app.controller.js"></script>
 
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
-
-</div><!-- page -->
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/index/index.module.js"></script>
+<script src="<?php echo Yii::app()->request->baseUrl ?>/app/index/index.controller.js"></script>
 
 </body>
 </html>
